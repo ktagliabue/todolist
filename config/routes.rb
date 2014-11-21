@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :checklist do
-    resources :tasks, except: [:index], controller: 'checklists/tasks' do
-    end
+  resources :checklists do
+    resources :tasks
   end
 
   get "/home/index"

@@ -1,0 +1,13 @@
+<% @checklists.each do |check| %>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= link_to check.name, check %>
+        <%= link_to 'Destroy', check, method: :delete %>
+        <%= link_to 'Edit', [:edit, check] %>
+      </h4>
+    </div>
+  </div>
+<% end %>
+
+<%= render partial: 'checklists/form', locals: { checklist: Checklist.new } %>

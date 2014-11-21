@@ -1,0 +1,17 @@
+<%= @checklist.name %>
+<%= @checklist.tasks.count %> tasks
+
+<%= link_to 'Destroy', [@checklist, @task], method: :delete %>
+<%= link_to 'Edit', [:edit, @checklist, @task] %>
+
+<%= render partial: 'checklists/task', locals: { task: Task.new } %>
+<% @checklist.tasks.each do |task| %>
+    <div class="media">
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= task.name %>
+        </h4>
+      </div>
+    </div>
+  <% end %>
+</div>

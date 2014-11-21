@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120051830) do
+ActiveRecord::Schema.define(version: 20141120220635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "checklists", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "models", force: true do |t|
@@ -40,6 +42,9 @@ ActiveRecord::Schema.define(version: 20141120051830) do
   add_index "models", ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true, using: :btree
 
   create_table "tasks", force: true do |t|
+    t.integer  "checklist_id"
+    t.integer  "user_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,4 @@
+<%= form_for task, url: checklist_tasks_path(@checklist.id) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
