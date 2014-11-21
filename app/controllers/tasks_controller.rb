@@ -43,7 +43,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to [@checklist, @task]
+    redirect_to [@checklist]
   end
 
 private
