@@ -6,6 +6,9 @@
         <%= link_to 'Destroy', check, method: :delete %>
         <%= link_to 'Edit', [:edit, check] %>
       </h4>
+      <p>
+      Tags: <%= raw @checklists, @tagging.map(&:name).map {|t| link_to t, tag_path(t)}.join(', ') %>
+      </p>
     </div>
   </div>
 <% end %>

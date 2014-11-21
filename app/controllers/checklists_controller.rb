@@ -2,7 +2,11 @@ class ChecklistsController < ApplicationController
   before_action :set_checklist, only: [:show, :edit, :update, :destroy]
 
   def index
-    @checklists = Checklist.all
+    if params[:tag]
+      @checklist = Checklist.tagged_with(params[:tag])
+    else
+      @checklist = Checklist.all
+    end
   end
 
   def show
