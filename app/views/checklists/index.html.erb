@@ -1,4 +1,4 @@
-<% @checklists.each do |check| %>
+<% @checklist.each do |check| %>
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
@@ -7,10 +7,10 @@
         <%= link_to 'Edit', [:edit, check] %>
       </h4>
       <p>
-      Tags: <%= raw @checklists, @tagging.map(&:name).map {|t| link_to t, tag_path(t)}.join(', ') %>
+      Tags: <%= render check.tags %>
       </p>
     </div>
   </div>
 <% end %>
 
-<%= render partial: 'checklists/form', locals: { checklist: Checklist.new } %>
+<%= render partial: 'checklists/form', locals: { :checklist => Checklist.new } %>

@@ -2,6 +2,7 @@ class ChecklistsController < ApplicationController
   before_action :set_checklist, only: [:show, :edit, :update, :destroy]
 
   def index
+    puts "current_user => #{current_user.id}"
     if params[:tag]
       @checklist = Checklist.tagged_with(params[:tag])
     else
@@ -21,7 +22,7 @@ class ChecklistsController < ApplicationController
 
   def create
     @checklist = Checklist.new(params.require(:checklist).permit(:name))
-    @checklist.user = current_user
+    @checklist.user_id = current_user.id
 
     if @checklist.save
       redirect_to @checklist, notice: "Checklist was saved successfully."

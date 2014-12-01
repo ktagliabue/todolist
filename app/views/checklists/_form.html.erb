@@ -1,7 +1,7 @@
 <%= form_for checklist do |f| %>
-  <%= f.text_label :name %><br />
-  <%= f.text_field :name %>
-  <%= f.text_label :tag_list "Tags (seperated by commas)"%><br />
+  <%= f.label :name %><br />
+  <%= f.text_field :name %><br />
+  <%= f.label :tag_list, "Tags (seperated by commas)" %><br />
   <%= f.text_field :tag_list %>
   <%= f.submit %>
 <% end %>
