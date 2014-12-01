@@ -14,7 +14,7 @@
 # end
 #
 every 30.days do
-  runner "AnotherModel.prune_old_records"
+  runner "Task.prune_old_records"
 end
 
 # Learn more: http://github.com/javan/whenever

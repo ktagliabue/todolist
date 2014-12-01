@@ -5,14 +5,6 @@ class Checklist < ActiveRecord::Base
   has_many :tags, through: :taggings 
   validates :name, length: {minimum: 1}
 
-  def index
-    if params[:tag]
-      @checklists = Checklist.tagged_with(params[:tag])
-    else
-      @checklists = Checklist.all
-    end
-  end
-
   def self.tagged_with(name)
     Tag.find_by_name!(name).checklists
   end
