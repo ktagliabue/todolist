@@ -1,0 +1,12 @@
+<div class="media">
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to checklist.name, checklist %>
+      <%= link_to 'Destroy', checklist, method: :delete %>
+      <%= link_to 'Edit', [:edit, checklist] %>
+    </h4>
+    <p>
+    Tags: <%= render checklist.tags %>
+    </p>
+  </div>
+</div>

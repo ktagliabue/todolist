@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
+  resources :tags, only: [:index, :show]
+
   get "home/index"
-  get "tags/:tag", to: 'checklists#index', as: :tag 
+  # get "tags/index"
 
   root :to => "home#index"
 

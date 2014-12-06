@@ -1,7 +1,13 @@
 <%= form_for checklist do |f| %>
   <%= f.label :name %><br />
-  <%= f.text_field :name %><br />
-  <%= f.label :tag_list, "Tags (seperated by commas)" %><br />
-  <%= f.text_field :tag_list %>
+  <div class="ui fluid icon input">
+    <%= f.text_field :name %>
+    <i class="search icon"></i>
+  </div>
+  <div class="ui fluid icon input">
+    <%= f.label :tag_list, "Tags (seperated by commas)" %><br />
+    <i class="search icon"></i>
+    <%= f.text_field :tag_list, data: {autocomplete_source: tags_path} %>
+  </div>
   <%= f.submit %>
 <% end %>

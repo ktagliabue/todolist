@@ -7,6 +7,8 @@ gem 'rails', '4.1.8'
 gem 'pg'
 gem 'devise'
 gem 'whenever', :require => false
+gem 'jquery-ui-rails'
+gem 'semantic-ui-sass', '~> 0.19.3.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.2.0.2'
