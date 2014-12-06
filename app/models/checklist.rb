@@ -4,6 +4,7 @@ class Checklist < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings 
   validates :name, length: {minimum: 1}
+  validates :user, presence: true
 
   def self.tagged_with(name)
     Tag.find_by(name: name).checklists
