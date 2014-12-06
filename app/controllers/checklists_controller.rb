@@ -20,6 +20,9 @@ class ChecklistsController < ApplicationController
   end
 
   def create
+    if user_signed_in?
+      @checklist = Checklist.create
+    end
     @checklist = Checklist.new(params.require(:checklist).permit(:name, :tag_list))
     @checklist.user = current_user
 
@@ -43,7 +46,9 @@ class ChecklistsController < ApplicationController
   end
 
   def destroy
-    @checklist.destroy
+    if user_signed_in?
+      @checklist.destroy
+    end
     redirect_to checklists_path
   end
 

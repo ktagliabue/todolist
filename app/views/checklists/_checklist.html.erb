@@ -1,11 +1,17 @@
 <div class="media">
   <div class="media-body">
     <h4 class="media-heading">
-      <%= link_to checklist.name, checklist %>
-      <%= link_to 'Destroy', checklist, method: :delete %>
-      <%= link_to 'Edit', [:edit, checklist] %>
-    </h4>
-    <p>
+    <div class="ui list">
+      <div class="item"><%= link_to checklist.name, checklist %></div>
+    </div>
+    <% if user_signed_in? %>
+      <%= link_to checklist, method: :delete do %>
+        <i class="trash icon"></i>
+      <% end %>
+      <%= link_to [:edit, checklist] do %>
+        <i class="edit icon"></i>
+      <% end %>
+    <% end %>
     Tags: <%= render checklist.tags %>
     </p>
   </div>

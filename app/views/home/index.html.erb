@@ -1,21 +1,11 @@
 <br/>
+  <% if user_signed_in? %>
+    <div>Signed in as... <%= current_user.email %></div>
+    <% elsif %>
+    <%= link_to "Sign In", new_user_session_path %> or 
+    <%= link_to "Sign Up", new_user_registration_path %> today!
+  <% end %>
 <div class="jumbotron">
   <h1>Todo List</h1>
   <p>This one self destructs!!!!</p>
-  <p>
-      <%= link_to "Sign In", new_user_session_path %> or 
-      <%= link_to "Sign Up", new_user_registration_path %> today!
-  </p>
-<div class="row">
-  <label class="col-xs-4">
-    <input type="text" class="form-control" placeholder="enter goal here">
-  </label>
-
-  <label class="col-xs-3">
-    <input type="text" id="form-control" value="Days Left"> #{}
-  </label>
-
-  <label class="checkbox-inline">
-    <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-  </label>
-</div>
+<%= render partial: 'checklists/form', locals: { :checklist => Checklist.new } %>
