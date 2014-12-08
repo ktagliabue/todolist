@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  
   before_action :set_checklist
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   
@@ -43,6 +44,15 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
+    redirect_to [@checklist]
+  end
+
+
+  def complete
+    if user_signed_in?
+      @task = Task.find(params[:task_id])
+      @task.finish
+    end
     redirect_to [@checklist]
   end
 

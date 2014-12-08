@@ -9,8 +9,11 @@
 <body>
    <p class="notice"><%= flash[:notice] %></p>
    <p class="alert"><%= flash[:alert] %></p>
-   <p class="error"><%= flash[:error] %></p>
-
+   <% if flash[:error] %>
+   <div class="ui negative message">
+      <%= flash[:error] %>
+   </div>
+   <%end%>
 
   <%= yield %>
 

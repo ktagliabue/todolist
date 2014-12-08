@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :checklists do
-    resources :tasks
+    resources :tasks do
+      get 'complete' => 'tasks#complete'
+    end
   end
 
   resources :tags, only: [:index, :show]

@@ -1,5 +1,5 @@
 function split( val ) {
-  return val.split( /,\s*/ );
+  return val.split( /,\s*/);
 }
 function extractLast( term ) {
   return split( term ).pop();
@@ -8,10 +8,9 @@ function extractLast( term ) {
 $(function(){
   $('#checklist_tag_list').autocomplete({
     source: function(request, response){
-      var term = extractLast(request.term)
+      var term = extractLast(request.term).toLowerCase()
       var url = $('#checklist_tag_list').data('autocomplete-source')
       $.get(url, {term: term}, function(data){
-          console.log(data)
           response(data)
       })
     },

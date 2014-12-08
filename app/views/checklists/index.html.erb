@@ -1,3 +1,5 @@
-Create a New Checklist!
-<%= render partial: 'checklists/form', locals: { :checklist => Checklist.new } %>
-<%= render @checklist %>
+<div class="ui grid">
+  <div class="sixteen wide column">Create a New Checklist!</div>
+  <div class="sixteen wide column"><%= render partial: 'checklists/form', locals: { :checklist => Checklist.new } %></div>
+  <div class="sixteen wide column"><%= render @checklist %></div>
+</div>

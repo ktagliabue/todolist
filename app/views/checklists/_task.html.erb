@@ -1,4 +1,7 @@
 <%= form_for [@checklist, task] do |f| %>
-  <%= f.text_field :name %>
-  <%= f.submit 'Create Task' %>
+<div class="ui fluid icon input">
+  <%= f.text_field :name %>  
+  </div>
+  </br>
+  <%= f.submit :class => "ui button" %>
 <% end %>

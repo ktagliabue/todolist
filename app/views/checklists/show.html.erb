@@ -1,32 +1,42 @@
-<%= @checklist.name %>
+<div class="ui grid">
+<div class="sixteen wide column"><%= @checklist.name %>
 <%= @checklist.tasks.count %> Task(s)
 
 <% if user_signed_in? %>
-  <%= link_to @checklist, method: :delete do %>
-    <i class="trash icon"></i>
-  <% end %>
-  <%= link_to [:edit, @checklist] do %>
-    <i class="edit icon"></i>
-  <% end %>
+    <%= link_to @checklist, method: :delete do %>
+      <i class="trash icon"></i>
+    <% end %>
+    <%= link_to [:edit, @checklist] do %>
+      <i class="edit icon"></i>
+    <% end %>
+  </div>
 <% end %>
 
-<%= render partial: 'checklists/task', locals: { task: Task.new } %>
+<div class="sixteen wide column"><%= render partial: 'checklists/task', locals: { task: Task.new } %></div>
 <% @checklist.tasks.each do |task| %>
+<div class="sixteen wide column">
     <div class="media">
       <div class="media-body">
-        <h4 class="media-heading">
-          <%= task.name %>
-          <% if user_signed_in? %>
-             <%= link_to [@checklist, task], method: :delete do %>
-              <i class="trash icon"></i>
-            <% end %>
-            <%= link_to [:edit, @checklist, task] do %>
-              <i class="edit icon"></i>
+        <%= task.name %>
+        <% if user_signed_in? %>
+         <%= link_to checklist_task_complete_path(@checklist.id, task.id) do %>
+            <i class="check circle icon"></i>
+          <% end %>
+           <%= link_to [@checklist, task], method: :delete do %>
+            <i class="trash icon"></i>
+          <% end %>
+          <%= link_to [:edit, @checklist, task] do %>
+            <i class="edit icon"></i>
             <% end %>
           <% end %>
-        </h4>
       </div>
     </div>
+  </div>
   <% end %>
-</div>
+<div class="sixteen wide column">
+<div class="ui button">
 <%= link_to 'View All Checklists', checklists_path %>
+</div>
+</div>
+</div>
+</div>

@@ -4,10 +4,12 @@
     <%= f.text_field :name %>
     <i class="search icon"></i>
   </div>
+  <br/>
+  <%= f.label :tag_list, "Tags (seperated by commas)" %><br />
   <div class="ui fluid icon input">
-    <%= f.label :tag_list, "Tags (seperated by commas)" %><br />
     <i class="search icon"></i>
     <%= f.text_field :tag_list, data: {autocomplete_source: tags_path} %>
   </div>
-  <%= f.submit %>
+  <br/>
+  <%= f.submit :class => "ui button" %>
 <% end %>
