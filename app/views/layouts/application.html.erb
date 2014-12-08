@@ -7,9 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if flash[:notice] %>
   <div class="ui success message">
     <%= flash[:notice] %>
   </div>
+  <%end%>
    <p class="alert"><%= flash[:alert] %></p>
    <% if flash[:error] %>
    <div class="ui negative message">
