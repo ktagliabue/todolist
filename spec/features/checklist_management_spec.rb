@@ -52,16 +52,14 @@ feature 'Deletion Management' do
         click_button 'Log in'
         
         visit '/checklists'
-        click_link 'Destroy'
+        click_link 'destroy'
 
         expect(Checklist.all.count).to eq(0)
       end
 
       scenario 'A signed-out user cannot delete a checklist' do
         visit '/checklists'
-        click_link 'Destroy'
-
-        expect(Checklist.all.count).to eq(1)
+        expect(page).to_not have_link('destroy')
       end
     end
   end

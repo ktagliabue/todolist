@@ -5,7 +5,7 @@
       <div class="item"><%= link_to checklist.name, checklist %></div>
     </div>
     <% if user_signed_in? %>
-      <%= link_to checklist, method: :delete do %>
+      <%= link_to checklist, method: :delete, id: 'destroy' do %>
         <i class="trash icon"></i>
       <% end %>
       <%= link_to [:edit, checklist] do %>
