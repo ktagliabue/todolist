@@ -35,6 +35,7 @@ class ChecklistsController < ApplicationController
   end
 
   def update
+    @checklist = Checklist.find(params.permit(:id))
     @checklist.update(params.require(:checklist).permit(:name))
 
     if @checklist.save

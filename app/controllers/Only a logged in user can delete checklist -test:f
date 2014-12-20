@@ -1,0 +1,17 @@
+As a user, I want to be able to authenticate myself from the command line, using a username and password. -test
+
+As a user, I want to be able to create new users, lists, and items from the command line. -test
+
+As a user, I want to be able to remove lists from the command line. -test
+
+As a user, I want to be able to change list permissions from the command line, and receive an error when I attempt to set an unsupported permission. -test
+
+
+Add "Complete Checklist"
+
+Fix CSS on autocomplete dropdown
+Allow enter to be an event 
+validate special chars
+Complete tasks when all tasks are complete, complete checklist
+create empty task validate
+Tags show inescapable
