@@ -14,7 +14,6 @@ class Api::V1::ChecklistsController < ApplicationController
     @user = User.find(params[:user_id])
     @checklists = @user.checklists
     render json: @user.checklists
-    head 200
   end
 
   def destroy

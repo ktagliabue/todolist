@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :users, only: [] do
-        resources :checklists, only: [:create, :index, :update, :destroy]
+        resources :checklists, only: [:create, :index, :update, :destroy] do
+          resources :tasks, only: [:create, :index, :update, :destroy]
+        end
       end
     end
   end

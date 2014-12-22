@@ -43,7 +43,10 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task.destroy
+    if user_signed_in?
+      @task = Task.find(params[:id])
+      @task.destroy!
+    end
     redirect_to [@checklist]
   end
 
