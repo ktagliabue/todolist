@@ -8,7 +8,7 @@ describe 'Tasks API' do
 
       it "creates a task belonging to that checklist" do
         post "/api/v1/users/#{user.id}/checklists/#{checklist.id}/tasks", {task: {name: 'a task'}}
-        expect(user.tasks.count).to eq(1)
+        expect(checklist.tasks.count).to eq(1)
       end
     end
   end 
