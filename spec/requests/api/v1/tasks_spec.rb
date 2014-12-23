@@ -38,4 +38,17 @@ describe 'Tasks API' do
       end
     end
   end
+
+  describe '#index' do
+    context "for an existing user's existing checklists with some tasks" do
+      let!(:user){ User.create!(email: 'a@a.com', password: '12345678') }
+      let!(:checklist){ user.checklists.create!(name: 'a checklist') }
+      before { 5.times { |n| checklist.tasks.create!(name: "task #{n}") } }
+
+      it "returns checklist's tasks" do
+        get "/api/v1/users/#{user.id}/checklists/#{checklist.id}/tasks"
+        expect(response.body).to eq(checklist.tasks.to_json)
+      end
+    end
+  end
 end
