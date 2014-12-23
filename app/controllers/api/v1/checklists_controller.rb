@@ -3,11 +3,17 @@ class Api::V1::ChecklistsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    # @checklist = Checklist.new(name: params[:checklist][:name])
-    @checklist = Checklist.new(params.require(:checklist).permit(:name))
-    @checklist.user = @user
-    @checklist.save!
-    head 200
+    if @user.valid_password?(params[:password])
+      # @checklist = Checklist.new(name: params[:checklist][:name])
+      @checklist = Checklist.new(params.require(:checklist).permit(:name))
+      @checklist.user = @user
+      @checklist.save!
+      head 200
+    elsif
+      head 500
+    end
+
+
   end
 
   def index 

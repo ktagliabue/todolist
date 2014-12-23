@@ -23,7 +23,7 @@ describe 'Checklists API' do
       context 'unauthenticated' do
         it 'does not create a checklist' do
           post "/api/v1/users/#{user.id}/checklists", {checklist: {name: 'a checklist'} }
-          expect(checklist.count).to eq(0)
+          expect(Checklist.count).to eq(0)
         end
       end
     end

@@ -2,12 +2,14 @@ class Api::V1::TasksController < ApplicationController
   # params = {checklist_id: 5, task: {name: 'somejunk'}}
 
   def create
-    @task = Task.new(params.require(:task).permit(:name))
-    @task.checklist = @checklist
-    @task.user = @user
-    @user = User.find(params[:user_id])
-    @task.save!
+    @checklist = Checklist.find(params[:checklist_id])
+    @task = Task.create!(checklist_id: @checklist.id, name:params.require(:task).permit(:name)["name"])
     head 200
+  end
+
+  def index 
+    @checklist = Checklist.find(params[:checklist_id])
+    render json: @checklist.tasks.to_json
   end
   
   def destroy

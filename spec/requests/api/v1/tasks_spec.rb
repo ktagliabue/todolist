@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Tasks API' do
   context 'with a user and a checklist' do
     let!(:user){ User.create!(email: 'a@a.com', password: '12345678') }
-    let!(:checklist){ user.checklists.create(name: 'a checklist') }
+    let!(:checklist){ user.checklists.create!(name: 'a checklist') }
 
     describe '#create' do
       it 'creates a task belonging to that checklist' do
@@ -18,7 +18,7 @@ describe 'Tasks API' do
       describe '#index' do
         it "returns the checklist's tasks" do
           get "/api/v1/users/#{user.id}/checklists/#{checklist.id}/tasks"
-          expect(response.body).to eq(user.checklists.to_json)
+          expect(response.body).to eq(checklist.tasks.to_json)
         end
       end
     end
