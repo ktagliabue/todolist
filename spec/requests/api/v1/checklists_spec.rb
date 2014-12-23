@@ -5,9 +5,26 @@ describe 'Checklists API' do
     let!(:user){ User.create!(email: 'a@a.com', password: '12345678') }
 
     describe '#create' do
-      it 'creates a checklist belonging to that user' do
-        post "/api/v1/users/#{user.id}/checklists", {checklist: {name: 'a checklist'}}
-        expect(user.checklists.count).to eq(1)
+      context 'properly authentication' do
+        it 'creates a checklist belonging to that user' do
+          post "/api/v1/users/#{user.id}/checklists", {email: 'a@a.com', password: '12345678', checklist: {name: 'a checklist'}}
+          # params = {
+          #   user_id: 1,
+          #   email: 'a@a.com',
+          #   password: '12345678',
+          #   checklist: {
+          #     name: 'a checklist'
+          #   }
+          # }
+          expect(user.checklists.count).to eq(1)
+        end
+      end
+
+      context 'unauthenticated' do
+        it 'does not create a checklist' do
+          post "/api/v1/users/#{user.id}/checklists", {checklist: {name: 'a checklist'} }
+          expect(checklist.count).to eq(0)
+        end
       end
     end
 
